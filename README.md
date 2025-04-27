@@ -11,13 +11,37 @@ This project demonstrates how to use [Pulumi](https://www.pulumi.com/) to provis
 
 ## Architecture
 
-![Architecture Diagram](https://www.pulumi.com/blog/static-websites-on-aws-s3-cloudfront/meta.png)
+```
+┌───────────────┐     ┌───────────────┐     ┌───────────────┐
+│               │     │               │     │               │
+│    Users      │────▶│   CloudFront  │────▶│   S3 Bucket   │
+│               │     │  Distribution │     │               │
+└───────────────┘     └───────────────┘     └───────────────┘
+                             │                      ▲
+                             │                      │
+                             ▼                      │
+                      ┌───────────────┐     ┌───────────────┐
+                      │  Origin       │     │  Bucket       │
+                      │  Access       │────▶│  Policy       │
+                      │  Identity     │     │               │
+                      └───────────────┘     └───────────────┘
+```
 
-The architecture consists of:
-1. An S3 bucket that stores the website content
-2. A CloudFront distribution that serves the content globally
-3. An Origin Access Identity that provides secure access to the S3 bucket
-4. A bucket policy that allows CloudFront to access the S3 bucket
+### Flow Description
+
+1. **Users** request content from the CloudFront URL
+2. **CloudFront Distribution** serves cached content or forwards requests to the origin
+3. **Origin Access Identity** provides secure access to the S3 bucket
+4. **Bucket Policy** ensures only CloudFront can access the S3 bucket content
+5. **S3 Bucket** stores the static website files
+
+### Components Created by Pulumi
+
+- `aws.s3.BucketV2`: The S3 bucket that stores the website content
+- `aws.cloudfront.OriginAccessIdentity`: Secures access to the S3 bucket
+- `aws.s3.BucketPolicy`: Configures permissions for CloudFront access
+- `aws.cloudfront.Distribution`: Distributes content globally with low latency
+- `synced.S3BucketFolder`: Syncs local files to the S3 bucket during deployment
 
 ## Prerequisites
 
