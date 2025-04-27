@@ -1,5 +1,7 @@
 # S3 Static Website with CloudFront CDN using Pulumi MCP
 
+[![Build status](https://badge.buildkite.com/49f24c5dc524ff6d4d1f73a98c356adbd2027c4b48bed86aaf.svg)](https://buildkite.com/cnunciato/hello-pulumi-mcp)
+
 This project demonstrates how to use [Pulumi](https://www.pulumi.com/) to provision and manage AWS infrastructure for hosting a static website. It creates an S3 bucket for content storage and a CloudFront distribution to serve that content with low latency globally.
 
 ## Features
