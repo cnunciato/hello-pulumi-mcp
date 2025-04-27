@@ -16,18 +16,6 @@ steps:
       pulumi stack select dev
       pulumi up -y
       
-      CDN_URL=$(pulumi stack output distributionDomainName)
-      if [ ! -z "$CDN_URL" ]; then
-        echo "--- :cloudfront: Creating build annotation with CloudFront URL"
-        cat << EOF | buildkite-agent annotate --style "success"
-## :rocket: Deployment Successful!
-
-Your static website is now available at: [https://$CDN_URL](https://$CDN_URL)
-
-:white_check_mark: CloudFront Distribution: $CDN_URL
-:white_check_mark: S3 Bucket: $(pulumi stack output bucketName)
-EOF
-      else
-        echo "--- :warning: Could not get CloudFront URL from Pulumi outputs"
-        buildkite-agent annotate "Failed to retrieve CloudFront URL from Pulumi outputs" --style "warning"
-      fi
+      CDN_URL="https://$(pulumi stack output distributionDomainName)"
+      echo ":white_check_mark: CloudFront URL: [$CDN_URL]($CDN_URL)" | buildkite-agent annotate --style "success"
+    
