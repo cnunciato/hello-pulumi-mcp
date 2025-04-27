@@ -1,5 +1,5 @@
 name: hello-pulumi-mcp
-description: A minimal AWS TypeScript Pulumi program
+description: S3 Static Website with CloudFront CDN using Pulumi MCP and the Synced Folder component
 runtime:
   name: nodejs
   options:
