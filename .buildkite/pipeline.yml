@@ -1,0 +1,16 @@
+steps:
+
+  - label: ":pulumi: Preview"
+    if: build.pull_request.id != null
+    command: |
+      export PULUMI_ACCESS_TOKEN="$$(buildkite-agent secret get PULUMI_ACCESS_TOKEN)"
+      pulumi install
+      pulumi preview
+
+  - label: ":pulumi: Deploy"
+    if: build.branch == "main" && build.pull_request.id == null
+    command: |
+      export PULUMI_ACCESS_TOKEN="$(buildkite-agent secret get PULUMI_ACCESS_TOKEN)"
+      pulumi install
+      pulumi up -y
+      
