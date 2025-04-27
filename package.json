@@ -1,5 +1,5 @@
 {
-    "name": "hello-pulumi",
+    "name": "hello-pulumi-mcp",
     "main": "index.ts",
     "devDependencies": {
         "@types/node": "^18",

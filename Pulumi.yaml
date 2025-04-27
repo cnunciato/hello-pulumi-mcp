@@ -1,4 +1,4 @@
-name: hello-pulumi
+name: hello-pulumi-mcp
 description: A minimal AWS TypeScript Pulumi program
 runtime:
   name: nodejs

@@ -1,4 +1,4 @@
-# S3 Static Website with CloudFront CDN using Pulumi
+# S3 Static Website with CloudFront CDN using Pulumi MCP
 
 This project demonstrates how to use [Pulumi](https://www.pulumi.com/) to provision and manage AWS infrastructure for hosting a static website. It creates an S3 bucket for content storage and a CloudFront distribution to serve that content with low latency globally.
 
@@ -54,8 +54,8 @@ This project demonstrates how to use [Pulumi](https://www.pulumi.com/) to provis
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/cnunciato/hello-pulumi.git
-   cd hello-pulumi
+   git clone https://github.com/cnunciato/hello-pulumi-mcp.git
+   cd hello-pulumi-mcp
    ```
 
 2. Install dependencies:
