@@ -1,0 +1,9 @@
+#!/bin/bash
+set -euo pipefail
+
+# Ensure Pulumi is installed
+if ! command -v pulumi &> /dev/null; then
+  echo "Installing Pulumi CLI..."
+  curl -fsSL https://get.pulumi.com | sh
+  export PATH=$PATH:$HOME/.pulumi/bin
+fi
