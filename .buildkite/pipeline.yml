@@ -5,6 +5,7 @@ steps:
     command: |
       export PULUMI_ACCESS_TOKEN="$$(buildkite-agent secret get PULUMI_ACCESS_TOKEN)"
       pulumi install
+      pulumi stack select dev
       pulumi preview
 
   - label: ":pulumi: Deploy"
@@ -12,5 +13,6 @@ steps:
     command: |
       export PULUMI_ACCESS_TOKEN="$(buildkite-agent secret get PULUMI_ACCESS_TOKEN)"
       pulumi install
+      pulumi stack select dev
       pulumi up -y
       
