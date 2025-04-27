@@ -16,6 +16,6 @@ steps:
       pulumi stack select dev
       pulumi up -y
       
-      CDN_URL="https://$(pulumi stack output distributionDomainName)"
+      CDN_URL="https://$$(pulumi stack output distributionDomainName)"
       echo ":white_check_mark: CloudFront URL: [$CDN_URL]($CDN_URL)" | buildkite-agent annotate --style "success"
     
